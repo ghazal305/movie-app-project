@@ -1,0 +1,26 @@
+<div class="wishlist-container" *ngIf="wishlist().length > 0; else emptyState">
+  <div
+    class="wishlist-card row"
+    *ngFor="let movie of wishlist()"
+  >
+    <div class="col-md-4">
+      <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}" class="img-fluid" />
+    </div>
+    <div class="col-md-8">
+      <h3>{{ movie.title }}</h3>
+      <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+      <p><strong>Rating:</strong> {{ movie.vote_average }} ⭐</p>
+      <p>{{ movie.overview }}</p>
+      <button class="btn btn-outline-danger" (click)="remove(movie.id)">Remove</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #emptyState>
+  <div class="empty-wishlist d-flex flex-column align-items-center justify-content-center text-center">
+    <i class="bi bi-heartbreak empty-icon"></i>
+    <h4 class="mt-3">No movies in wishlist</h4>
+    <button class="btn btn-primary mt-3 back-home-btn" (click)="goHome()">Back to Home</button>
+  </div>
+</ng-template>
+

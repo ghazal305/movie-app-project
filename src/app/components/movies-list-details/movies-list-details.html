@@ -1,0 +1,39 @@
+<div class="details-container" *ngIf="movie">
+  <!-- Movie Details -->
+  <div class="movie-details">
+    <div class="poster">
+      <img
+        [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+        [alt]="movie.title"
+      />
+    </div>
+    <div class="info">
+      <h2>{{ movie.title }}</h2>
+      <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+      <p><strong>Rating:</strong> {{ movie.vote_average }} ⭐</p>
+      
+      <p><strong>Overview:</strong></p>
+      <p>{{ movie.overview }}</p>
+    </div>
+  </div>
+
+  <!-- Recommended Movies -->
+  <div class="recommendations">
+    <h3>Recommended Movies</h3>
+    <div class="recommendation-list">
+      <div class="recommendation-card" *ngFor="let rec of recommendations">
+        <a [routerLink]="['/movie', rec.id]">
+          <div class="card">
+            <img
+              [src]="'https://image.tmdb.org/t/p/w500' + rec.poster_path"
+              [alt]="rec.title"
+            />
+            <div class="card-body">
+              <h6>{{ rec.title }}</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

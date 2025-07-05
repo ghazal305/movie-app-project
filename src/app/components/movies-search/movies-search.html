@@ -1,0 +1,16 @@
+<section class="search-section d-flex flex-column align-items-center justify-content-center">
+  <h2>Welcome to our movie app</h2>
+  <p>Millions of movies, TV shows and people to discover. Explore now.</p>
+  <form class="search-form d-flex mt-3 w-100 justify-content-center">
+    <input
+      type="text"
+      class="form-control search-input me-2"
+      placeholder="Search for a movie..."
+      [value]="query()"
+      name="searchQuery"
+      readonly
+    />
+    <button type="button" class="btn search-btn" disabled>Search</button>
+  </form>
+</section>
+<app-movies-list [movies]="movies()"></app-movies-list>
